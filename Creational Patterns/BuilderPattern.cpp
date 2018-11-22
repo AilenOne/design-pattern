@@ -39,7 +39,17 @@ public:
 
 class OrderBuilder : public IBuilder
 {
-	void builderPart1();
+	void builderPart1()
+	{std::cout << "OrderBuilder OrderBuilder"  << std::endl;}
+	void builderPart2();
+	void builderPart3();
+};
+
+
+class OrderBuilder2 : public IBuilder
+{
+	void builderPart1()
+	{std::cout << "OrderBuilder2 OrderBuilder"  << std::endl;}
 	void builderPart2();
 	void builderPart3();
 };
