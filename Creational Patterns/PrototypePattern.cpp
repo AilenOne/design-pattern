@@ -1,28 +1,28 @@
 
 
-class IService
+class IServer
 {
 public:
-	virtual IService* Clone() = 0;
+	virtual IServer* Clone() = 0;
 
 };
 
 
-class ServiceA
+class ServerA
 {
 public:
-	IService* Clone()
+	IServer* Clone()
 	{
-		return new ServiceA(*this);
+		return new ServerA(*this);
 	}
 };
 
 
-class ServiceB
+class ServerB
 {
 public:
-	IService* Clone()
+	IServer* Clone()
 	{
-		return new ServiceB(*this);
+		return new ServerB(*this);
 	}
 };
