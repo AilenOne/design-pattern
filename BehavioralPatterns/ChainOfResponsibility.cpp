@@ -11,7 +11,7 @@ protected:
 	std::string itsName;
 };
 
-
+//经理
 class CommonManager : public  Manager
 {
 public:
@@ -31,6 +31,7 @@ public:
 	}
 };
 
+//总监
 class MajorManager : public  Manager
 {
 public:
@@ -50,7 +51,7 @@ public:
 	}
 };
 
-
+//总经理
 class GeneralManager : public  Manager
 {
 public:
