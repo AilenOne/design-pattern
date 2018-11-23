@@ -16,10 +16,10 @@ protected:
 	std::string nodeName;
 };
 
-class Filer : public Node
+class File : public Node
 {
 public:
-	Filer(const string& name):Node(name)
+	File(const string& name):Node(name)
 
 	void display()
 	{
@@ -30,10 +30,10 @@ private:
 	void removeNode(Node& node);
 };
 
-class Noder : public Node
+class Dir : public Node
 {
 public:
-	Noder(const string& name):Node(name)
+	Dir(const string& name):Node(name)
 
 	void addNode(Node& node)
 	{
@@ -58,16 +58,16 @@ private:
 
 void test()
 {
-	Node* root = new Noder("c:/");
-	Node* file1 = new Filer("TEST.txt");
+	Node* root = new Dir("c:/");
+	Node* file1 = new File("TEST.txt");
 	root->addNode(file);
-	Noder* dir = new Noder("SRC");
-	Noder* filea = new Noder("a.cpp");
-	Noder* fileb = new Noder("b.cpp");
+	Noder* dir = new Dir("SRC");
+	Noder* filea = new File("a.cpp");
+	Noder* fileb = new File("b.cpp");
 	dir->addNode(filea);
 	dir->addNode(fileb);
 
-	root->addNode(file);
+	root->addNode(file1);
 	root->addNode(dir);
 }
 
