@@ -13,15 +13,15 @@ class ClientB : public IClient
 };
 
 
-class IServer
+class IService
 {
 };
 
-class ServerA : public IServer
+class ServiceA : public IService
 {
 };
 
-class ServerB : public IServer
+class ServiceB : public IService
 {
 };
 
@@ -29,21 +29,21 @@ class AbstracetFactory
 {
 public:
 	virtual IClient* createClient() = 0;
-	virtual IService* createServer() = 0;
+	virtual IService* createService() = 0;
 };
 
 class FactoryA : public AbstracetFactory
 {
 public:
 	IClient* createClient();
-	IService* createServer();
+	IService* createService();
 };
 
 class FactoryB : public AbstracetFactory
 {
 public:
 	IService* createClient();
-	IService* createServer();
+	IService* createService();
 };
 
 
