@@ -35,8 +35,14 @@ public:
 class FactoryA : public AbstracetFactory
 {
 public:
-	IClient* createClient();
-	IService* createService();
+	IClient* createClient()
+	{
+		return new ClientA();
+	}
+	IService* createService()
+	{
+		return new ClientB();
+	}
 };
 
 class FactoryB : public AbstracetFactory
