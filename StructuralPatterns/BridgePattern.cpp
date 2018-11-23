@@ -2,7 +2,7 @@
 /********************switch and electrical equipment*********************************/
 
 
-
+//电器
 class IElectricalEquipment
 {
 public:
@@ -13,7 +13,7 @@ public:
 	virtual void PowerOff() = 0;
 };
 
-
+//开关
 class Light : public IElectricalEquipment
 {
 public:
@@ -29,6 +29,7 @@ public:
 	}
 };
 
+//风扇
 class Fan : public IElectricalEquipment
 {
 public:
@@ -44,6 +45,7 @@ public:
 	}
 };
 
+//开关
 class ISwitch
 {
 public:
@@ -55,6 +57,7 @@ protected:
 	std::shared<IElectricalEquipment> euqipment;
 };
 
+//按键快关
 class KeySwitch : public ISwitch
 {
 public:
@@ -71,6 +74,7 @@ public:
 	};
 };
 
+//双位开关
 class TwoPositionSwithc: public ISwitch
 {
 public:
