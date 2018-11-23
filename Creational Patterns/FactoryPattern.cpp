@@ -81,10 +81,10 @@ public:
 int test() {
 	AbstracetFactory* FactoryA = new  FactoryA();
 	IClient* clientA =  FactoryA->createProduct();
-  clientA->getClientName();
+        clientA->getClientName();
   
   
-  AbstracetFactory* FactoryB = new  FactoryB();
+        AbstracetFactory* FactoryB = new  FactoryB();
 	IClient* clientB =  FactoryB->createProduct();
 	clientB->getClientName();
 	return 0;
