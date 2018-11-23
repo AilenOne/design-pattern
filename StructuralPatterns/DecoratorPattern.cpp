@@ -1,5 +1,5 @@
 
-
+//饮料
 class IBeverage
 {
 public:
@@ -7,6 +7,7 @@ public:
 	virtual double Cost() = 0;
 };
 
+// 黑咖啡，属于混合咖啡
 class HouseBlend : public IBeverage
 {
 public:
@@ -19,6 +20,7 @@ public:
 	}
 };
 
+// 深度烘培咖啡豆
 class DarkRoast : public IBeverage
 {
 public:
@@ -33,12 +35,12 @@ public:
 
 /////////////////////////////////////////////////////////////////
 
-
-class HouseBlendWithMilk : public IBeverage
+//黑咖啡 + 奶油
+class HouseBlendWithCream : public IBeverage
 {
 public:
 	string Name()
-	{  return "HouseBlendWithMilk";}
+	{  return "HouseBlendWithCream";}
 
 	double cost()
 	{
@@ -47,7 +49,7 @@ public:
 };
 
 /////////////////////////////////////////////////////////////////
-
+// 调味品
 class CondimentDecorator : public IBeverage
 {
 public:
@@ -66,11 +68,13 @@ private:
 	IBeverage*   iBeverage;
 };
 
+/********** 具体的饮料（调味品）**********/
 
-class Milk : public CondimentDecorator
+// 奶油
+class Cream  : public CondimentDecorator
 {
 public:
-	Milk(IBeverage* ibeverage) : CondimentDecorator(ibeverage)
+	Cream (IBeverage* ibeverage) : CondimentDecorator(ibeverage)
 	{}
 
 	string Name()
@@ -85,7 +89,7 @@ private:
 	IBeverage*   iBeverage;
 };
 
-
+// 糖浆
 class Syrup : public CondimentDecorator
 {
 public:
@@ -104,7 +108,7 @@ private:
 	IBeverage*   iBeverage;
 };
 
-
+// 摩卡
 class Mocha : public CondimentDecorator
 {
 public:
