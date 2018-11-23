@@ -41,15 +41,21 @@ public:
 	}
 	IService* createService()
 	{
-		return new ClientB();
+		return new ServiceA();
 	}
 };
 
 class FactoryB : public AbstracetFactory
 {
 public:
-	IService* createClient();
-	IService* createService();
+	IService* createClient()
+	{
+		return new ClientB();
+	}
+	IService* createService()
+	{
+		return new ServiceB();
+	}
 };
 
 
