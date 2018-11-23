@@ -29,7 +29,29 @@ public:
 		return "ClientB";
 	}
 };
+///////////////////////////////////////////////////////////////////
+class SimpleFactory
+{
+public:
+	IClient* createProduct(Type type)
+	{
+		IClient* clinet = nullptr;
+		if (type == A）
+		{
+			clinet = new ClientA();
+		}
+		else(type == B)
+		{
+			clinet = new  ClientB();  
+		}
+		return clinet;
+	}
+}
 
+
+
+
+/////////////////////////////////////////////////////////
 class AbstracetFactory
 {
 public:
