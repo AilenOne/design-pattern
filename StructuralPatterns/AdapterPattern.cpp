@@ -18,6 +18,7 @@ public:
 	void removeElement();
 };
 
+/////对象适配器
 class VectorIterator :public Iterator
 {
 public:
@@ -33,6 +34,7 @@ private:
 	Vector  itsVector;
 };
 
+////类适配器
 class VectorIterator :public Iterator, public Vector
 {
 public:
