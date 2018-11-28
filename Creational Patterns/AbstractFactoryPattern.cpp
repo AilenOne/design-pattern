@@ -1,61 +1,98 @@
 
-
-class IClient
+class IMobile
 {
+public:
+	virtual const std::string getProductName() = 0;
 };
 
-class ClientA : public IClient
+class HUAWEMobile : public IMobile
 {
+public:
+	HUAWEMobile()
+	{cout << "create HUAWEMobile!" << endl; }
+
+	const std::string getProductName()
+	{
+		return "HUAWEMobile";
+	}
 };
 
-class ClientB : public IClient
+class XIAOMMobile : public IMobile
 {
+public:
+	XIAOMMobile()
+	{cout << "create XIAOMMobile!" << endl; }
+
+	const std::string getProductName()
+	{
+		return "XIAOMMobile";
+	}
 };
 
-
-class IService
+class IBangle
 {
+public:
+	virtual const int cost() = 0;
 };
 
-class ServiceA : public IService
+class HUAWEBangle : public IBangle
 {
+public:
+	HUAWEIBangle()
+	{cout << "create HUAWEIBangle!" << endl; }
+
+	const std::string cost()
+	{
+		return 100;
+	}
 };
 
-class ServiceB : public IService
+class XIAOMBangle : public IBangle
 {
+public:
+	XIAOMBangle()
+	{cout << "create XIAOMBangle!" << endl; }
+
+	const std::string cost()
+	{
+		return 200;
+	}
 };
 
+/////////////////////////////////////////////////////////
 class AbstracetFactory
 {
 public:
-	virtual IClient* createClient() = 0;
-	virtual IService* createService() = 0;
+	virtual IMobile* createMobile() = 0;
+	virtual IBangle* createBangle() = 0;
 };
 
-class FactoryA : public AbstracetFactory
+class FactoryHUAWEI : public AbstracetFactory
 {
 public:
-	IClient* createClient()
+	IMobile* createMobile()
 	{
-		return new ClientA();
+		return new HUAWEMobile();
 	}
-	IService* createService()
+	IBangle* createBangle()
 	{
-		return new ServiceA();
+		return new HUAWEBangle();
 	}
 };
 
-class FactoryB : public AbstracetFactory
+
+class FactoryXIAOMI : public AbstracetFactory
 {
 public:
-	IService* createClient()
+	IMobile* createMobile()
 	{
-		return new ClientB();
+		return new XIAOMMobile();
 	}
-	IService* createService()
+	IBangle* createBangle()
 	{
-		return new ServiceB();
+		return new XIAOMBangle();
 	}
 };
+
 
 
