@@ -1,50 +1,50 @@
 
 
-class IClient
+class IProduce
 {
 public:
-	virtual const std::string getClientName() = 0;
+	virtual const std::string getProductName() = 0;
 };
 
-class ClientA : public IClient
+class HUAWEIMobile : public IProduce
 {
 public:
-	ClientA()
-	{cout << "create ClientA!" << endl; }
+	HUAWEIMobile()
+	{cout << "create HUAWEIMobile!" << endl; }
 
-	const std::string getClientName()
+	const std::string getProductName()
 	{
-		return "ClientA";
+		return "HUAWEIMobile";
 	}
 };
 
-class ClientB : public IClient
+class XIAOMIMobile : public IProduce
 {
 public:
-	ClientB()
-	{cout << "create ClientB!" << endl; }
+	XIAOMIMobile()
+	{cout << "create XIAOMIMobile!" << endl; }
 
-	const std::string getClientName()
+	const std::string getProductName()
 	{
-		return "ClientB";
+		return "XIAOMIMobile";
 	}
 };
 ///////////////////////////////////////////////////////////////////
 class SimpleFactory
 {
 public:
-	IClient* createProduct(Type type)
+	IProduce* createProduct(Type type)
 	{
-		IClient* clinet = nullptr;
-		if (type == A）
+		IProduce* product = nullptr;
+		if (type == "HUAWEI"）
 		{
-			clinet = new ClientA();
+			product = new HUAWEIMobile();
 		}
-		else(type == B)
+		else(type == "XIAOMI")
 		{
-			clinet = new  ClientB();  
+			product = new XIAOMIMobile();  
 		}
-		return clinet;
+		return product;
 	}
 }
 
@@ -55,37 +55,37 @@ public:
 class AbstracetFactory
 {
 public:
-	virtual IClient* createProduct() = 0;
+	virtual IProduce* createProduct() = 0;
 };
 
-class FactoryA : public AbstracetFactory
+class FactoryHUAWEI : public AbstracetFactory
 {
 public:
-	IClient* createProduct()
+	IProduce* createProduct()
 	{
-		return new ClientA;
+		return new HUAWEIMobile();
 	}
 };
 
 
-class FactoryB : public AbstracetFactory
+class FactoryXIAOMI : public AbstracetFactory
 {
 public:
-	IClient* createProduct()
+	IProduce* createProduct()
 	{
-		return new ClientB;
+		return new XIAOMIMobile();
 	}
 };
 
 
 int test() {
-	AbstracetFactory* FactoryA = new  FactoryA();
-	IClient* clientA =  FactoryA->createProduct();
-        clientA->getClientName();
+	AbstracetFactory* Factoryhuawei = new  FactoryHUAWEI();
+	IProduce* huawei =  Factoryhuawei->createProduct();
+        huawei->getProductName();
   
   
-        AbstracetFactory* FactoryB = new  FactoryB();
-	IClient* clientB =  FactoryB->createProduct();
-	clientB->getClientName();
+        AbstracetFactory* Factoryxiaomi = new  FactoryXIAOMI();
+	IProduce* xiaomi =  Factoryxiaomi->createProduct();
+	xiaomi->getProductName();
 	return 0;
 }
