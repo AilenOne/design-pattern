@@ -4,16 +4,8 @@
 class Singleton
 {
 public:
-	~Singleton()
-	{
-		 if (m_pSingleton != nullptr)
-		 {
-		        delete m_pSingleton;
-		        m_pSingleton = nullptr;
-		 }
-	}
-
     static Singleton* GetInstance();
+	
 private:
     Singleton() {}
 
@@ -59,20 +51,12 @@ private:
 //-------------------------------------------------------------------
 //double lock
 class SingleObject
-{
-	SingleObject();
+{	
 public:
-	~SingleObject()
-	{
-		if (nullptr != object)
-		{
-			delete object;
-			object = nullptr;
-		}
-	}
 	static const SingleObject*  getSignleObject();
 
 private:
+	SingleObject();
 	static SingleObject* object;
 	static std::mutex objectMutex;
 };
@@ -82,15 +66,15 @@ SingleObject* SingleObject::object=nullptr;
 
 const SingleObject* SingleObject::getSignleObject()
 {
+    if (nullptr == object)
+    {
+        std::unique_lock<std::mutex> lock(objectMutex);
 	if (nullptr == object)
-	{
-		std::unique_lock<std::mutex> lock(objectMutex);
-		if (nullptr == object)
-		{
-			object = new SingleObject();
-		}
+        {
+	   object = new SingleObject();
 	}
-  return object;
+    }
+    return object;
 }
 
 
