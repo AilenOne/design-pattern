@@ -2,7 +2,7 @@ class IBill
 {
 public：
     virtual void accept(AccountBookViewer viewer);
-}
+};
 
 class AccountBookVisitor
 {
