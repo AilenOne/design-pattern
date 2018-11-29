@@ -3,13 +3,13 @@
 class IObserver
 {
 public:
-	virtual void update(int state) = 0;
+	virtual void update(string state) = 0;
 };
 
 class ConcreteObserver : public IObserver
 {
 public:
-    void Update(int state) {
+    void Update(string state) {
         std::cout <<"update state: " << state << "\n" << std::endl;
     }
 };
@@ -23,13 +23,13 @@ public:
 	virtual void Notify() = 0;
 };
 
-class ConcreteSubject : public ISubject
+class WeatherSubject : public ISubject
 {
 public:
-	ConcreteSubject(int state):itsState(state)
+	WeatherSubject(string state):itsState(state)
 	{}
 
-	void setState(int state)
+	void setState(string state)
 	{ itsState = state;}
 
 	void Attach(IObserver *observer) {
@@ -49,24 +49,24 @@ public:
 
 private:
 	list<IObserver *> observers;
-	int itsState;
+	string itsState;
 };
 
 void Test()
 {
-	 ConcreteSubject subject(2);
+	 WeatherSubject subject("sun");
 	 IObserver *pObserver1 = new ConcreteObserver();
 	 IObserver *pObserver2 = new ConcreteObserver();
 
 	 subject.Attach(pObserver1);
 	 subject.Attach(pObserver2);
 
-	 subject.setState(5);
+	 subject.setState("rain");
 	 subject.Notify();
 
 	 subject.Detach(pObserver2);
 
-	 subject.setState(15);
+	 subject.setState("cloudy");
 	 subject.Notify();
 }
 
