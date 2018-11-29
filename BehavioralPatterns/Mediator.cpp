@@ -35,7 +35,7 @@ protected:
 	std::list<ICustomer*>  customers;
 };
 
-class ConcreteMediator: public IMediator
+class TaobaoConcreteMediator: public IMediator
 {
 public:
 	virtual void send(const std::string& message, ICustomer* sendercustomer)
@@ -52,13 +52,16 @@ public:
 
 void Test()
 {
-	ConcreteMediator mediator;
+	TaobaoConcreteMediator mediator;
 	ConcrateCustomer c1;
 	ConcrateCustomer c2;
-
+	ConcrateCustomer c3;
+	ConcrateCustomer c4;
 
 	mediator.reigsterCustomer(&c1);
 	mediator.reigsterCustomer(&c2);
+	mediator.reigsterCustomer(&c3);
+	mediator.reigsterCustomer(&c4);
 
 	c1.sendMessage(mediator, "test message");
 	c2.sendMessage(mediator, "test message");
