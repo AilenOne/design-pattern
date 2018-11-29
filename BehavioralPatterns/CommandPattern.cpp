@@ -1,18 +1,41 @@
 
 
-class Receiver
+class IReceiver
+{
+public:
+     virtual void open()
+     virtual void close()
+};
+
+
+class ClientReceiver
 {
 public:
 	void open()
 	{
-		std::cout << "open" << std::endl;
+		std::cout << "open clinet" << std::endl;
 	}
 
 	void close()
 	{
-		std::cout << "close" << std::endl;
+		std::cout << "close clinet" << std::endl;
 	}
 };
+
+class LogReceiver
+{
+public:
+	void open()
+	{
+		std::cout << "open log" << std::endl;
+	}
+
+	void close()
+	{
+		std::cout << "close log" << std::endl;
+	}
+};
+
 
 
 class Command
@@ -76,7 +99,8 @@ private:
 
 void test()
 {
-	Receiver receiver;
+	ClientReceiver receiver;  
+	// LogReceiver receiver;
 	Command* open = new CommandOpen(&receiver);
 	Command* close = new CommandClose(&receiver);
 
