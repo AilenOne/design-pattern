@@ -59,14 +59,18 @@ private:
 void test()
 {
 	Node* root = new Dir("c:/");
+	
+	//create file
 	Node* file1 = new File("TEST.txt");
-	root->addNode(file);
+
+	//create dir
 	Noder* dir = new Dir("SRC");
 	Noder* filea = new File("a.cpp");
 	Noder* fileb = new File("b.cpp");
 	dir->addNode(filea);
 	dir->addNode(fileb);
 
+	//add file and dir into root dir
 	root->addNode(file1);
 	root->addNode(dir);
 }
