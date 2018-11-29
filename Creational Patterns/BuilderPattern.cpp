@@ -1,13 +1,67 @@
 
-
-
-
-
-class IBuilder
+class Computer
 {
-	virtual void builderPart1();
-	virtual void builderPart2();
-	virtual void builderPart3();
+public:
+	void setCPU(const string& cpu);
+	{
+		cpu_ = cpu;
+	}
+	void setRAM(const string& ram)
+	{
+		ram_ = ram;
+	}
+private:
+	string cpu_;
+	string ram_;
+};
+
+class IBuilder 
+{
+    virtual void buildCpu();
+    virtual void buildRam();
+    virtual Computer getComputer();
+};
+
+
+class IBMComputerBuilder : public Builder 
+{
+public:
+   void buildCpu() {
+   	computer.setCPU(string("IBMComputerBuilder CPU"));
+    }
+
+    void buildRam() {
+         computer.setCPU(string("IBMComputerBuilder RAM" ));
+    }
+    
+    Computer getComputer()
+    {
+    	return computer;
+    }
+    
+private:
+    Computer  computer;
+};
+
+
+class DELLComputerBuilder : public Builder 
+{
+public:
+   void buildCpu() {
+       computer.setCPU(string("DELLComputerBuilder CPU"));
+    }
+
+    void buildRam() {
+        computer.setCPU(string("DELLComputerBuilder RAM" ));
+    }
+    
+    Computer getComputer()
+    {
+    	return computer;
+    }
+    
+private:
+    Computer  computer;
 };
 
 class Idirector
@@ -19,48 +73,29 @@ public:
 	}
 
 	virtual void construct() = 0;
-
-protected:
-	IBuilder* itsBuilder;
 };
+
 
 class Director : public Idirector
 {
 public:
-	void construct()
-	{
-		itsBuilder->builderPart1();
-		itsBuilder->builderPart2();
-		itsBuilder->builderPart2();
-		itsBuilder->builderPart3();
-	}
-};
-
-
-class OrderBuilder : public IBuilder
-{
-	void builderPart1()
-	{std::cout << "OrderBuilder OrderBuilder"  << std::endl;}
-	void builderPart2();
-	void builderPart3();
-};
-
-
-class OrderBuilder2 : public IBuilder
-{
-	void builderPart1()
-	{std::cout << "OrderBuilder2 OrderBuilder"  << std::endl;}
-	void builderPart2();
-	void builderPart3();
-};
-
+    void construct()
+    {
+	itsBuilder->buildCpu();
+	itsBuilder->buildRam();
+    }
+};	
+	
 
 int test()
 {
-	OrderBuilder builder;
-	Director director;
-	director.setBuilder(builder);
-	director.construct();
+	Builder* builder =  new IBMComputerBuilder();
+	Director  director;
+	director->setBuilder(*builder);
+	Director->construct();
+	
+	Computer computer = builder->getComputer();
+	
 }
 
 
