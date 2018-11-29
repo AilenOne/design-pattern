@@ -47,7 +47,7 @@ public:
 	}
 };
 
-class Invoker
+class ServerThread
 {
 public:
 	void setCommand(Command* command)
@@ -55,7 +55,7 @@ public:
 		itsCommands.push_back(command);
 	}
 
-	void Notify()
+	void do()
 	{
 		for (auto commands: itsCommands)
 		{
@@ -80,10 +80,10 @@ void test()
 	Command* open = new CommandOpen(&receiver);
 	Command* close = new CommandClose(&receiver);
 
-	Invoker inverker;
-	inverker.setCommand(open);
-	inverker.setCommand(close);
-	inverker.Notify();
+	ServerThread server;
+	server.setCommand(open);
+	server.setCommand(close);
+	server.do();
 }
 
 
